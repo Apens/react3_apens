@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-
 import PropType from 'prop-types';
 
 const Header = ({ title }) => {
@@ -9,7 +8,7 @@ const Header = ({ title }) => {
         <h1>{title}</h1>
         <ul className={`navbar-nav me-auto mb-2 mb-lg-0`}>
           <li className={`nav-item`}>
-            <NavLink to="/" className={`nav-link`}>
+            <NavLink exact to="/" className={`nav-link`}>
               Home
             </NavLink>
           </li>
