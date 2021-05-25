@@ -20,3 +20,5 @@ const articles = [
     body: 'Contenu Article 4',
   },
 ];
+
+export default articles;
