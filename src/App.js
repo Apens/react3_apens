@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
-
+import Articles from './components/layouts/Articles';
 class App extends Component {
   state = {
-    theme: 'light',
+    theme: 'dark',
     title: 'My Super Web Company',
   };
 
@@ -32,6 +32,8 @@ class App extends Component {
           style={theme === 'dark' ? darkStyle : defaultStyle}
         >
           <p>Testing React Classes</p>
+
+          <Articles />
 
           <button onClick={() => this.changeTheme()}>Change Theme</button>
         </div>

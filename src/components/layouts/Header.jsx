@@ -4,13 +4,17 @@ const Header = ({ title }) => {
   return (
     <header>
       <h1>{title}</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="!#">Home</a>
+      <nav className={`navbar navbar-expand-lg navbar-light bg-light`}>
+        <ul className={`navbar-nav me-auto mb-2 mb-lg-0`}>
+          <li className={`nav-item`}>
+            <a href="!#" className={`nav-link`}>
+              Home
+            </a>
           </li>
-          <li>
-            <a href="!#">About</a>
+          <li className={`nav-item`}>
+            <a href="!#" className={`nav-link`}>
+              About
+            </a>
           </li>
         </ul>
       </nav>
