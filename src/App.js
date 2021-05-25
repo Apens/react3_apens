@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
-import Articles from './components/layouts/Articles';
+import Articles from './components/articles/Articles';
 class App extends Component {
   state = {
     theme: 'dark',
