@@ -1,17 +1,13 @@
-// Afficher les data
 import articles from '../data';
 import { Fragment } from 'react';
+import Article from './Article';
 
 const Articles = () => {
   return (
     <Fragment>
       {articles.map(article => {
         return (
-          <ul key={article.id} className={`list-group`}>
-            <li className={`list-group-item`}>
-              <a href="!#">{article.title}</a>
-            </li>
-          </ul>
+          <Article key={article.id} title={article.title} body={article.body} />
         );
       })}
     </Fragment>
