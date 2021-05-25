@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+
+.light {
+  margin-top: 1em;
+  background-color: orangered;
+}
+
+.dark {
+  margin-top: 1em;
+  background-color: #293d50;
+  color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

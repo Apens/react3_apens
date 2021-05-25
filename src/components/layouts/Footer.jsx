@@ -1,0 +1,21 @@
+import PropTypes from 'prop-types';
+// Destructure props object
+const Footer = ({ theme, text }) => {
+  return (
+    <footer className={theme}>
+      <p>{text}</p>
+    </footer>
+  );
+};
+
+Footer.defaultProps = {
+  text: 'Texte par défaut',
+  theme: 'light',
+};
+
+Footer.propTypes = {
+  text: PropTypes.string,
+  theme: PropTypes.string,
+};
+
+export default Footer;
