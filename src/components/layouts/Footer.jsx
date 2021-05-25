@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const Footer = ({ theme, text }) => {
   return (
     <footer className={theme}>
-      <p>{text}</p>
+      <p>&copy; {text}</p>
     </footer>
   );
 };

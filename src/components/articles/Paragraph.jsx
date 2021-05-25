@@ -16,7 +16,9 @@ const Paragraph = ({ body }) => {
     <Fragment>
       <p className={`text-info`}>
         {isVisible ? body : body.substr(0, 50)}
-        <button onClick={maybeIsVisible}>{buttonText}</button>{' '}
+        <button className={`btn btn-xs btn-info`} onClick={maybeIsVisible}>
+          {buttonText}
+        </button>{' '}
       </p>
     </Fragment>
   );

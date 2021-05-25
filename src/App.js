@@ -3,6 +3,8 @@ import './App.css';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import Articles from './components/articles/Articles';
+import Users from './components/users/Users';
+
 class App extends Component {
   state = {
     theme: 'dark',
@@ -32,12 +34,14 @@ class App extends Component {
           style={theme === 'dark' ? darkStyle : defaultStyle}
         >
           <p>Testing React Classes</p>
-
           <Articles />
-
+          <Users />
           <button onClick={() => this.changeTheme()}>Change Theme</button>
         </div>
-        <Footer text={'value'} theme={theme} />
+        <Footer
+          text={`EvilWeb ${new Date().toLocaleDateString()}`}
+          theme={theme}
+        />
       </Fragment>
     );
   }

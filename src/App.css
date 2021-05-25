@@ -48,3 +48,13 @@
     transform: rotate(360deg);
   }
 }
+
+.card {
+  margin: auto;
+  max-width: 100%;
+  width: 50%;
+}
+
+.card:first-of-type {
+  margin-top: 2em;
+}
