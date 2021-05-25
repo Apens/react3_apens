@@ -10,7 +10,7 @@ const Footer = ({ theme, text }) => {
 
 Footer.defaultProps = {
   text: 'Texte par défaut',
-  theme: 'light',
+  theme: 'dark',
 };
 
 Footer.propTypes = {

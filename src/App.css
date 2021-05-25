@@ -58,3 +58,7 @@
 .card:first-of-type {
   margin-top: 2em;
 }
+
+.active {
+  background-color: #293d50;
+}

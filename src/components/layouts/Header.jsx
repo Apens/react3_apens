@@ -1,20 +1,32 @@
+import { NavLink } from 'react-router-dom';
+
 import PropType from 'prop-types';
 
 const Header = ({ title }) => {
   return (
     <header>
-      <h1>{title}</h1>
       <nav className={`navbar navbar-expand-lg navbar-light bg-light`}>
+        <h1>{title}</h1>
         <ul className={`navbar-nav me-auto mb-2 mb-lg-0`}>
           <li className={`nav-item`}>
-            <a href="!#" className={`nav-link`}>
+            <NavLink to="/" className={`nav-link`}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li className={`nav-item`}>
-            <a href="!#" className={`nav-link`}>
+            <NavLink to="/about" className={`nav-link`}>
               About
-            </a>
+            </NavLink>
+          </li>
+          <li className={`nav-item`}>
+            <NavLink to="/users" className={`nav-link`}>
+              Users
+            </NavLink>
+          </li>
+          <li className={`nav-item`}>
+            <NavLink to="/blog" className={`nav-link`}>
+              Blog
+            </NavLink>
           </li>
         </ul>
       </nav>

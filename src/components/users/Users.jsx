@@ -1,12 +1,13 @@
 import data from '../data/users';
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 const Users = () => {
   return (
     <Fragment>
       {data.map(user => {
         return (
-          <div className="card mb-3">
+          <div className="card mb-3" key={user.id}>
             <img
               src={user.image}
               className="card-img-top img-fluid rounded mx-auto img-thumbnail"
@@ -14,6 +15,9 @@ const Users = () => {
             />
             <div className="card-body">
               <h5 className="card-title text-info">{user.name}</h5>
+              <Link to={`/users/${user.id}`}>
+                Voir le détails de cet utilisateur
+              </Link>
               <p className="card-text text-primary">{user.address.line1}</p>
               <p className="card-text text-primary">{user.address.line2}</p>
               <p className="card-text">

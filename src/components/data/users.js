@@ -10,6 +10,7 @@ const data = [
       line2: 'adresse 2',
     },
     phones: ['07-07-070-7', '064512178'],
+    biography: 'je suis instagrameuse',
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const data = [
       line2: 'adresse 2',
     },
     phones: ['07-07-070-7', '064512178'],
+    biography: 'je suis instagrameuse',
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const data = [
       line2: 'adresse 2',
     },
     phones: ['07-07-070-7', '064512178'],
+    biography: 'je suis instagrameuse',
   },
 ];
 
