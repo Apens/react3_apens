@@ -16,6 +16,7 @@ const Users = () => {
             <div className="card-body">
               <h5 className="card-title text-info">{user.name}</h5>
 
+              {/* user */}
               <Link to={{ pathname: `/users/${user.id}`, user: user }}>
                 Voir le détails de cet utilisateur
               </Link>

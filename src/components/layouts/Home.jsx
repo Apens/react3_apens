@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Slider from '../slider/Slider';
 
 class Home extends Component {
   state = {
@@ -26,6 +27,7 @@ class Home extends Component {
         style={theme === 'dark' ? darkStyle : defaultStyle}
       >
         <h2>Welcome Home</h2>
+        <Slider />
         <button onClick={() => this.changeTheme()}>Change Theme</button>
       </div>
     );

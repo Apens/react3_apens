@@ -1,6 +1,6 @@
 import PropType from 'prop-types';
 import Paragraph from './Paragraph';
-
+// Destructure props directement
 const Article = ({ title, body }) => {
   return (
     <article>
