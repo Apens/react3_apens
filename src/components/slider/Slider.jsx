@@ -20,11 +20,19 @@ const Slider = () => {
   return (
     <Fragment>
       <div className="slides">
+        {/* TODO : FINISH this thing tonight */}
         {slides.map((slide, index) => {
           let position = 'nextSlider';
 
           if (sliderIndex === index) {
             position = 'activeSlider';
+          }
+
+          if (
+            sliderIndex === index - 1 ||
+            (index === 0 && sliderIndex === slide.length - 1)
+          ) {
+            position = 'lastSlider';
           }
 
           return (
