@@ -14,8 +14,18 @@ const Menu = () => {
   const [categories, setCategories] = useState(filteredCategories);
 
   const filterProducts = category => {
-    console.log(category);
     // setProducts selon la valeur de category
+    if (category === 'Tout') {
+      setProducts(data);
+      return;
+    }
+
+    const filteredProducts = data.filter(
+      // On ne retourne que les produits dont la catégorie est égale à celle qu'on reçoit en param.
+      product => product.category === category
+    );
+
+    setProducts(filteredProducts);
   };
 
   return (

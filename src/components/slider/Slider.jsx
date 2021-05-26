@@ -15,7 +15,17 @@ const Slider = () => {
     if (sliderIndex < 0) {
       setSliderIndex(lastSlide);
     }
-  }, [sliderIndex, setSliderIndex]);
+  }, [sliderIndex, slides]);
+
+  useEffect(() => {
+    let id = setInterval(() => {
+      setSliderIndex(sliderIndex + 1);
+    }, 3000);
+
+    return () => {
+      clearInterval(id);
+    };
+  }, [sliderIndex]);
 
   return (
     <Fragment>
