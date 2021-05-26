@@ -21,11 +21,15 @@ const Slider = () => {
     <Fragment>
       <div className="slides">
         {slides.map((slide, index) => {
+          if (sliderIndex === index) {
+            let position = 'activeSlider';
+          }
+
           return (
-            <div key={index} className="slide">
+            <article key={index} className={`slide ${position}`}>
               <img src={slide.image} alt="image" />
               <p>{slide.description}</p>
-            </div>
+            </article>
           );
         })}
         <div className="buttons">

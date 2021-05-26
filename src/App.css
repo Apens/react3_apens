@@ -130,6 +130,20 @@ button {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+
+.activeSlider {
+    transform: translateX(0);
+}
+
+.nextSlider {
+    transform: translateX(-100%);
+}
+
+.lastSlider {
+    transform: translateX(100%);
+}
+
+
 @keyframes slideInPlace {
     from {
         opacity: 0;
