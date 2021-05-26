@@ -1,11 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import image1 from './images/slider1.jpg';
-import image2 from './images/slider2.jpg';
-import image3 from './images/slider3.jpg';
+import data from './data';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 
 const Slider = () => {
-  const [slides, setSlides] = useState([image1, image2, image3]);
+  const [slides, setSlides] = useState(data);
   const [sliderIndex, setSliderIndex] = useState(0);
 
   useEffect(() => {
@@ -25,8 +23,8 @@ const Slider = () => {
         {slides.map((slide, index) => {
           return (
             <div key={index} className="slide">
-              <img src={slide} alt="image" />
-              <p>{index}</p>
+              <img src={slide.image} alt="image" />
+              <p>{slide.description}</p>
             </div>
           );
         })}
