@@ -21,8 +21,10 @@ const Slider = () => {
     <Fragment>
       <div className="slides">
         {slides.map((slide, index) => {
+          let position = 'nextSlider';
+
           if (sliderIndex === index) {
-            let position = 'activeSlider';
+            position = 'activeSlider';
           }
 
           return (
