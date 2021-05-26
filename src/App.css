@@ -132,14 +132,17 @@ button {
 
 
 .activeSlider {
+    opacity: 1;
     transform: translateX(0);
 }
 
 .nextSlider {
+    opacity: 0;
     transform: translateX(-100%);
 }
 
 .lastSlider {
+    opacity: 0;
     transform: translateX(100%);
 }
 

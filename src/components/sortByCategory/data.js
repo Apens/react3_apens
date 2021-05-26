@@ -65,3 +65,5 @@ const data = [
     name: 'Cognac',
   },
 ];
+
+export default data;

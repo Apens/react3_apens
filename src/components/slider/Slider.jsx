@@ -15,7 +15,7 @@ const Slider = () => {
     if (sliderIndex < 0) {
       setSliderIndex(lastSlide);
     }
-  }, [sliderIndex]);
+  }, [sliderIndex, setSliderIndex]);
 
   return (
     <Fragment>
@@ -30,7 +30,7 @@ const Slider = () => {
 
           if (
             sliderIndex === index - 1 ||
-            (index === 0 && sliderIndex === slide.length - 1)
+            (index === 0 && sliderIndex === slides.length - 1)
           ) {
             position = 'lastSlider';
           }
