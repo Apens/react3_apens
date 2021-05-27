@@ -45,6 +45,14 @@ const Formulaire = () => {
           onChange={showText}
           value={inputText || ''}
         />
+        {/*TODO Un composant Text configurable*/}
+        {/*<Text */}
+        {/*  name={}*/}
+        {/*  type={}*/}
+        {/*  onChange={}*/}
+        {/*  value={}*/}
+        {/*  placeHolder={}*/}
+        {/*/>*/}
         <button className={`btn btn-primary`}>Submit</button>
       </form>
 

@@ -1,16 +1,14 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import axios from 'axios';
-import { logDOM } from '@testing-library/react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 // import Form from './Form';
 // import ShowPreview from './ShowPreview';
 
 const Uploader = () => {
   const [images, setImages] = useState([]);
   const [totalFiles, setTotalFiles] = useState(0);
-  const [progressWidth, setProgressWidth] = useState({ width: '50%' });
+  const [progressWidth, setProgressWidth] = useState({ width: '0%' });
+  const [, setUploading] = useState(false);
 
-  const [uploading, setUploading] = useState(false);
-  const [uploaded, setUploaded] = useState(0);
+  const formRef = useRef();
 
   const loadImage = e => {
     if (!e.target.files.length) return; // Guard
@@ -29,6 +27,9 @@ const Uploader = () => {
 
     setTimeout(() => {
       setImages(prev => [...prev, ...files]);
+
+      // setImages([nouveauTrucs])
+      // setImages( elementsPrecedents => // ? un truc calculé)
     }, 100);
   };
 
@@ -37,15 +38,18 @@ const Uploader = () => {
   }, [images]);
 
   const calculateProgress = nbrUploaded => {
-    let percentage = (nbrUploaded / totalFiles) * 100;
-    // TODO
-    // setProgressWidth()
+    const width = {
+      width: `${(nbrUploaded / totalFiles) * 100}%`,
+    };
+
+    setProgressWidth(width);
   };
 
   const uploadFile = e => {
     e.preventDefault();
 
     const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+
     setTotalFiles(images.length);
 
     setUploading(true);
@@ -55,11 +59,13 @@ const Uploader = () => {
       formData.append('documents', image);
 
       calculateProgress(++index);
+
       // fetch('http://localhost/file-upload/post.php', {
       //   method: 'POST',
       //   body: formData,
       // }).then(res => console.log(res));
       //
+      // Installer et Importer axios si besoin
       // axios
       //   .post('http://localhost/file-upload/post.php', formData, config)
       //   .then(res => {
@@ -74,11 +80,19 @@ const Uploader = () => {
       //     console.log(e.message);
       //   });
     });
+
+    setTimeout(() => {
+      setImages([]);
+      setTotalFiles(0);
+      setProgressWidth({ width: '0%' });
+      setUploading(false);
+      formRef.current.reset();
+    }, 3000);
   };
 
   return (
     <Fragment>
-      <form className={`mb-5`} onSubmit={uploadFile}>
+      <form ref={formRef} className={`mb-5`} onSubmit={uploadFile}>
         <input
           type="file"
           name={'images'}
@@ -86,7 +100,9 @@ const Uploader = () => {
           multiple="multiple"
         />
         <br />
-        <button className={`btn btn-success`}>Upload file</button>
+        <button type={'submit'} className={`btn btn-success`}>
+          Upload file
+        </button>
       </form>
 
       <div className="progress mb-5">
