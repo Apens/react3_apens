@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import Messages from '../messages/messages';
+import Text from '../subcomponents/formComponents/Text';
 
 const Formulaire = () => {
   const [inputText, setInputText] = useState();
@@ -39,20 +40,20 @@ const Formulaire = () => {
   return (
     <Fragment>
       <form onSubmit={recordData}>
-        <input
+        {/*<input*/}
+        {/*  name={`name`}*/}
+        {/*  type="text"*/}
+        {/*  onChange={showText}*/}
+        {/*  value={inputText || ''}*/}
+        {/*/>*/}
+        {/*TODO Un composant Text configurable*/}
+        <Text
           name={`name`}
-          type="text"
+          type={`text`}
           onChange={showText}
           value={inputText || ''}
+          placeHolder={'No placeholder'}
         />
-        {/*TODO Un composant Text configurable*/}
-        {/*<Text */}
-        {/*  name={}*/}
-        {/*  type={}*/}
-        {/*  onChange={}*/}
-        {/*  value={}*/}
-        {/*  placeHolder={}*/}
-        {/*/>*/}
         <button className={`btn btn-primary`}>Submit</button>
       </form>
 
