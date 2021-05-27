@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Form from './Form';
 import ShowPreview from './ShowPreview';
+
 const Uploader = () => {
   const [images, setImages] = useState([]);
   const [uploading, setUploading] = useState(false);
@@ -9,27 +10,30 @@ const Uploader = () => {
   const [totalFiles, setTotalFiles] = useState(0);
 
   const loadImage = e => {
-    e.preventDefault();
-
     if (!e.target.files.length) return; // Guard
 
     let files = e.target.files;
 
-    Array.prototype.forEach.call(files, file => {
-      const reader = new ShowPreview(file, 'image');
+    Array.prototype.forEach.call(files, image => {
+      let reader = new FileReader();
 
-      /**
-       * data = []
-       * TODO: Modifier pour povoir faire setImages(data) avec un tableau en argument.
-       */
-      // documents.push(file);
+      reader.readAsDataURL(image);
 
-      reader.showPreview();
+      reader.onload = e => {
+        image.preview = e.target.result;
+      };
     });
+
+    setTimeout(() => {
+      setImages(prev => [...prev, ...files]);
+    }, 100);
   };
+
+  // useEffect(() => {}, [images]);
 
   const uploadFile = e => {
     e.preventDefault();
+    console.log(e.target);
     const config = { headers: { 'Content-Type': 'multipart/form-data' } };
     setTotalFiles(images.length);
 
@@ -63,7 +67,12 @@ const Uploader = () => {
   return (
     <Fragment>
       <form className={`mb-5`} onSubmit={uploadFile}>
-        <input type="file" name={'images'} />
+        <input
+          type="file"
+          name={'images'}
+          onChange={loadImage}
+          multiple="multiple"
+        />
         <br />
         <button className={`btn btn-success`}>Upload file</button>
       </form>
@@ -77,6 +86,18 @@ const Uploader = () => {
           aria-valuemax="100"
           style={style}
         />
+      </div>
+
+      <div className="row images">
+        {Array.prototype.map.call(images, (image, index) => {
+          return (
+            <img
+              key={images[index].name}
+              src={images[index].preview}
+              alt={`Image to upload`}
+            />
+          );
+        })}
       </div>
     </Fragment>
   );
