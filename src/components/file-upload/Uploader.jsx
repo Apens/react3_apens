@@ -7,9 +7,9 @@ import { logDOM } from '@testing-library/react';
 const Uploader = () => {
   const [images, setImages] = useState([]);
   const [totalFiles, setTotalFiles] = useState(0);
+  const [progressWidth, setProgressWidth] = useState({ width: '50%' });
 
   const [uploading, setUploading] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [uploaded, setUploaded] = useState(0);
 
   const loadImage = e => {
@@ -36,6 +36,12 @@ const Uploader = () => {
     setTotalFiles(images.length);
   }, [images]);
 
+  const calculateProgress = nbrUploaded => {
+    let percentage = (nbrUploaded / totalFiles) * 100;
+    // TODO
+    // setProgressWidth()
+  };
+
   const uploadFile = e => {
     e.preventDefault();
 
@@ -44,10 +50,11 @@ const Uploader = () => {
 
     setUploading(true);
 
-    Array.prototype.map.call(images, image => {
+    Array.prototype.map.call(images, (image, index) => {
       let formData = new FormData();
       formData.append('documents', image);
 
+      calculateProgress(++index);
       // fetch('http://localhost/file-upload/post.php', {
       //   method: 'POST',
       //   body: formData,
@@ -89,7 +96,7 @@ const Uploader = () => {
           aria-valuenow="75"
           aria-valuemin="0"
           aria-valuemax="100"
-          style={style}
+          style={progressWidth}
         />
       </div>
 
@@ -106,7 +113,5 @@ const Uploader = () => {
     </Fragment>
   );
 };
-
-const style = { width: '50%' };
 
 export default Uploader;
