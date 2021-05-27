@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Slider from '../slider/Slider';
 import Menu from '../sortByCategory/Menu';
 import Formulaire from '../forms/Formulaire';
+import Uploader from '../file-upload/Uploader';
 
 class Home extends Component {
   state = {
@@ -29,6 +30,7 @@ class Home extends Component {
         style={theme === 'dark' ? darkStyle : defaultStyle}
       >
         <h2>Welcome Home</h2>
+        <Uploader />
         <Formulaire />
         <Slider />
         <Menu />
