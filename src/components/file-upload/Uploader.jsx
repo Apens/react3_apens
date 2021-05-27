@@ -38,7 +38,7 @@ const Uploader = () => {
 
   const uploadFile = e => {
     e.preventDefault();
-    console.log(e.target);
+
     const config = { headers: { 'Content-Type': 'multipart/form-data' } };
     setTotalFiles(images.length);
 
@@ -46,26 +46,26 @@ const Uploader = () => {
 
     Array.prototype.map.call(images, image => {
       let formData = new FormData();
-      formData.append('file', image);
+      formData.append('documents', image);
 
-      fetch('http://localhost/file-upload/post.php', {
-        method: 'POST',
-        body: formData,
-      }).then(res => console.log(res));
-
-      axios
-        .post('http://localhost/file-upload/post.php', formData, config)
-        .then(res => {
-          if (res.data) {
-            // this.removeDroppedFile(image.preview);
-            console.log(res.data);
-            // return this.calculateProgress(total_files, ++uploaded);
-          }
-        })
-        .catch(e => {
-          // this.removeDroppedFile(image.preview);
-          console.log(e.message);
-        });
+      // fetch('http://localhost/file-upload/post.php', {
+      //   method: 'POST',
+      //   body: formData,
+      // }).then(res => console.log(res));
+      //
+      // axios
+      //   .post('http://localhost/file-upload/post.php', formData, config)
+      //   .then(res => {
+      //     if (res.data) {
+      //       // this.removeDroppedFile(image.preview);
+      //       console.log(res.data);
+      //       // return this.calculateProgress(total_files, ++uploaded);
+      //     }
+      //   })
+      //   .catch(e => {
+      //     // this.removeDroppedFile(image.preview);
+      //     console.log(e.message);
+      //   });
     });
   };
 
