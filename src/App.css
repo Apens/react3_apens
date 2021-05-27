@@ -158,3 +158,9 @@ button {
         transform: translateY(0%);
     }
 }
+
+.messages {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
