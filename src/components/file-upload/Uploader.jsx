@@ -1,13 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import Form from './Form';
-import ShowPreview from './ShowPreview';
+import axios from 'axios';
+import { logDOM } from '@testing-library/react';
+// import Form from './Form';
+// import ShowPreview from './ShowPreview';
 
 const Uploader = () => {
   const [images, setImages] = useState([]);
+  const [totalFiles, setTotalFiles] = useState(0);
+
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [uploaded, setUploaded] = useState(0);
-  const [totalFiles, setTotalFiles] = useState(0);
 
   const loadImage = e => {
     if (!e.target.files.length) return; // Guard
@@ -29,7 +32,9 @@ const Uploader = () => {
     }, 100);
   };
 
-  // useEffect(() => {}, [images]);
+  useEffect(() => {
+    setTotalFiles(images.length);
+  }, [images]);
 
   const uploadFile = e => {
     e.preventDefault();
@@ -39,28 +44,28 @@ const Uploader = () => {
 
     setUploading(true);
 
-    images.map(image => {
+    Array.prototype.map.call(images, image => {
       let formData = new FormData();
       formData.append('file', image);
 
-      /**
-       * TODO: Remplacer axios par fetch (in installer axios :/)
-       */
-      // axios
-      //   .post('./create.php', formData, config)
-      //   .then(res => {
-      //     if (res.data) {
-      //       this.removeDroppedFile(image.preview);
-      //       return this.calculateProgress(total_files, ++uploaded);
-      //     }
-      //   })
-      //   .catch(e => {
-      //     this.removeDroppedFile(image.preview);
-      //     return toastr.error(
-      //       'You must create an album first',
-      //       'Invalid Request'
-      //     );
-      //   });
+      fetch('http://localhost/file-upload/post.php', {
+        method: 'POST',
+        body: formData,
+      }).then(res => console.log(res));
+
+      axios
+        .post('http://localhost/file-upload/post.php', formData, config)
+        .then(res => {
+          if (res.data) {
+            // this.removeDroppedFile(image.preview);
+            console.log(res.data);
+            // return this.calculateProgress(total_files, ++uploaded);
+          }
+        })
+        .catch(e => {
+          // this.removeDroppedFile(image.preview);
+          console.log(e.message);
+        });
     });
   };
 
@@ -88,14 +93,13 @@ const Uploader = () => {
         />
       </div>
 
+      <p>
+        {totalFiles} {totalFiles > 1 ? 'Images' : 'Image'} en attente...
+      </p>
       <div className="row images">
         {Array.prototype.map.call(images, (image, index) => {
           return (
-            <img
-              key={images[index].name}
-              src={images[index].preview}
-              alt={`Image to upload`}
-            />
+            <img key={index} src={image.preview} alt={`Image to upload`} />
           );
         })}
       </div>
