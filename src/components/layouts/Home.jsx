@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from '../slider/Slider';
 import Menu from '../sortByCategory/Menu';
+import Formulaire from '../forms/Formulaire';
 
 class Home extends Component {
   state = {
@@ -28,6 +29,7 @@ class Home extends Component {
         style={theme === 'dark' ? darkStyle : defaultStyle}
       >
         <h2>Welcome Home</h2>
+        <Formulaire />
         <Slider />
         <Menu />
         <button onClick={() => this.changeTheme()}>Change Theme</button>
