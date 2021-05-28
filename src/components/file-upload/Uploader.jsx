@@ -1,6 +1,4 @@
 import React, { Fragment, useEffect, useState, useRef } from 'react';
-// import Form from './Form';
-// import ShowPreview from './ShowPreview';
 
 const Uploader = () => {
   const [images, setImages] = useState([]);
@@ -10,7 +8,7 @@ const Uploader = () => {
 
   const formRef = useRef();
 
-  const loadImage = e => {
+  const loadImage =  e => {
     if (!e.target.files.length) return; // Guard
 
     let files = e.target.files;
@@ -52,8 +50,6 @@ const Uploader = () => {
 
     setTotalFiles(images.length);
 
-    setUploading(true);
-
     Array.prototype.map.call(images, (image, index) => {
       let formData = new FormData();
       formData.append('documents', image);
@@ -85,7 +81,6 @@ const Uploader = () => {
       setImages([]);
       setTotalFiles(0);
       setProgressWidth({ width: '0%' });
-      setUploading(false);
       formRef.current.reset();
     }, 3000);
   };
@@ -120,7 +115,7 @@ const Uploader = () => {
         {totalFiles} {totalFiles > 1 ? 'Images' : 'Image'} en attente...
       </p>
       <div className="row images">
-        {Array.prototype.map.call(images, (image, index) => {
+        {images && Array.prototype.map.call(images, (image, index) => {
           return (
             <img key={index} src={image.preview} alt={`Image to upload`} />
           );

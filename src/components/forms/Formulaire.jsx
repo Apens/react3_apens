@@ -29,7 +29,7 @@ const Formulaire = () => {
       setSuccess(false);
       setMessage('');
       setLevel('');
-    }, 3000);
+    }, 5000);
   };
 
   const showText = e => {
