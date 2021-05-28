@@ -3,6 +3,7 @@ import Slider from '../slider/Slider';
 import Menu from '../sortByCategory/Menu';
 import Formulaire from '../forms/Formulaire';
 import Uploader from '../file-upload/Uploader';
+import TaskList from '../tasks/TaskList';
 
 class Home extends Component {
   state = {
@@ -29,7 +30,8 @@ class Home extends Component {
         className={`container`}
         style={theme === 'dark' ? darkStyle : defaultStyle}
       >
-        <h2>Welcome Home</h2>
+        <h2 className={'mb-5'}>Welcome Home</h2>
+        <TaskList />
         <Uploader />
         <Formulaire />
         <Slider />

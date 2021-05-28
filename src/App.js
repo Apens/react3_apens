@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import TaskDetail from './components/tasks/TaskDetail';
 import Header from './components/layouts/Header';
 import Home from './components/layouts/Home';
 import NotFound from './components/layouts/NotFound';
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path={'/users'} component={Users} />
           <Route exact path={'/users/:id'} component={UserDetail} />
           <Route path={'/blog'} component={Articles} />
+          <Route path={'/task/:id'} component={TaskDetail} />
           <Route component={NotFound} />
         </Switch>
         <Footer text={`EvilWeb ${new Date().toLocaleDateString()}`} />
